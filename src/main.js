@@ -1,9 +1,12 @@
 let config = {
     type: Phaser.CANVAS,
-    width:640,
-    height:480,
+    width:480,
+    height:320,
     physics: {
         default: 'arcade',
+        arcade: {
+            gravity: { y: 200 },
+        }
     },
     scene: [Play],
 };
