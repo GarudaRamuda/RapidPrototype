@@ -5,7 +5,7 @@ class Message extends Phaser.Scene {
 
     init(data) {
         //this.text = data.text;
-        this.text = "HIIIII"
+        this.text = messages[data.messageIndex];
     }
 
     create() {
@@ -16,5 +16,9 @@ class Message extends Phaser.Scene {
         }
 
         this.add.text(game.config.width/2, game.config.height/2, this.text, this.textConfig);
+
+        this.input.on("pointerdown" () => {
+            this.scene.start("playScene", {messageIndex: 1});
+        });
     }
 }

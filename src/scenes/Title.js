@@ -6,7 +6,11 @@ class Title extends Phaser.Scene {
 
     create() {
         this.titleTextConfig = {
-    }
     
+        }
+    this.input.on("pointerdown" () => {
+        this.scene.start("messageScene", {messageIndex: 1});
+    });
+
     }
 }
