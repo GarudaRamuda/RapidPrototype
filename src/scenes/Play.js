@@ -9,7 +9,7 @@ class Play extends Phaser.Scene {
    }
 
    create() {
-
+      this.win = false;
       this.gameover = false;
 
       // Player
@@ -17,26 +17,44 @@ class Play extends Phaser.Scene {
       this.player.setCollideWorldBounds(true);
 
       // Slugs
-      this.slug1 = new Slug(this, config.width, config.height - 20, 'slug');
-      this.slug2 = new Slug(this, config.width + 200, config.height - 20, 'slug');
+      this.slug1 = new Slug(this, config.width, config.height - 32, 'slug');
+      this.slug2 = new Slug(this, config.width + 200, config.height - 32, 'slug');
       
+      // Ground
+      this.floor = this.add.tileSprite(0, game.config.height - 16, game.config.width * 1, 32, 'floor').setOrigin(0,0);
+      this.floor.tileScaleX = .5;
+      this.floor.tileScaleY = .5;
+      this.physics.add.existing(this.floor, true);
+      this.floor.body.immovable = true;
+
+      this.physics.add.collider(this.player, this.floor);
+      this.physics.add.collider(this.slug1, this.floor);
+      this.physics.add.collider(this.slug2, this.floor);
 
       // touch pointer
       pointer = this.input.activePointer;
+
+      this.cameras.main.on(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+            this.scene.restart();
+        })
 
    }
 
    update() {
 
       if (!this.gameover) {
+         this.floor.tilePositionX +=2;
          // Player update
          this.player.update();
 
          // Slugs update
          this.slug1.update();
          this.slug2.update();
-      } else {
-         
+
+         if (this.slug2.body.x < 0 && !this.win) {
+            this.win = true;
+            this.gameOver();
+         }
       }
 
    }
@@ -44,5 +62,8 @@ class Play extends Phaser.Scene {
    gameOver() {
       console.log("game over");
       this.gameover = true;
+      this.add.text(game.config.width/2, game.config.height/2, this.win ? "You won!":"You lost!").setOrigin(0.5);
+      this.cameras.main.fade(2000,0,0,0);
+      this.physics.world.pause();
    }
 }
