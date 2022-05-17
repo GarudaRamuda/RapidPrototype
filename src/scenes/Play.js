@@ -51,7 +51,7 @@ class Play extends Phaser.Scene {
          this.slug1.update();
          this.slug2.update();
 
-         if (this.slug2.body.x < 0 && !this.win) {
+         if (this.slug2.body.x < -32 && !this.win) {
             this.win = true;
             this.gameOver();
          }
