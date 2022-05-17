@@ -19,7 +19,6 @@ class Message extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2, this.text, this.textConfig).setOrigin(0.5);
 
         this.input.on("pointerdown", () => {
-            console.log(this.targetSceneKey)
             this.scene.start(this.targetSceneKey, {messageIndex: this.currMessageIndex + 1});
         });
     }

@@ -12,7 +12,6 @@ class Gameplay extends Phaser.Scene {
     create() {
         this.loseTransitionText = this.add.text(32, 32, "Press L to lose!");
         this.input.on("pointerdown", () => {
-            console.log(this.targetSceneKey)
             this.scene.start(this.targetSceneKey, {messageIndex: this.currMessageIndex});
         });
         this.input.keyboard.on("keydown-L", () => {
