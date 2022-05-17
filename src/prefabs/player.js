@@ -8,6 +8,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    
    }
    update() {
+      if(this.scene.physics.world.collide(this, this.scene.slugs)) {
+         console.log("game over");
+         this.scene.gameOver();
+      }
 
       if (pointer.isDown && !this.isJumping) {
          this.isJumping = true;
@@ -19,13 +23,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
          console.log("landed");
          this.isJumping = false;
       }
-   }
 
-   gameOver() {
-      this.body.setVelocityY(0);
-      this.body.setVelocityX(0);
-      this.body.setAccelerationX(0);
-      this.body.setAccelerationY(0);
    }
-
 }
