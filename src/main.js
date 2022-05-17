@@ -33,6 +33,7 @@ let config = {
 
 let game = new Phaser.Game(config);
 
+// Scene flow messages
 let messages = [
     {text: "Watch out for slugs!", target: "playScene"},
     {text: "That's good work!", target: "messageScene"},
