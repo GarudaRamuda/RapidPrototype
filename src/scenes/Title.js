@@ -4,10 +4,15 @@ class Title extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('title', './assets/roly-poly-title-sheet.png');
+        this.load.image('title', './assets/Title.png');
     }
 
     create() {
-        let bg = this.add.sprite(100, 100, 'title').setOrigin(0, 0);
+        this.bg = this.add.rectangle(0,0,this.scale.width,this.scale.height, 0x65c980).setScale(2);
+        this.logo = this.add.sprite(config.scale.width/2, config.scale.height/3, 'title').setOrigin(0.5, 0.5).setScale(0.5);
+    }
+
+    update(time) {
+        this.logo.y += 0.1 * Math.sin(time / 500.0);
     }
 }
