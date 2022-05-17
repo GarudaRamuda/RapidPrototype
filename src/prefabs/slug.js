@@ -12,15 +12,5 @@ class Slug extends Phaser.Physics.Arcade.Sprite {
    update() {
       this.body.setVelocityX(-100);
 
-      if(this.scene.physics.world.collide(this, this.scene.player)) {
-         this.scene.gameOver();
-      }
-   }
-
-   gameOver() {
-      this.body.setVelocityY(0);
-      this.body.setVelocityX(0);
-      this.body.setAccelerationX(0);
-      this.body.setAccelerationY(0);
    }
 }
