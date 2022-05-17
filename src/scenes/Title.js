@@ -1,6 +1,7 @@
 class Title extends Phaser.Scene {
     constructor() {
         super("titleScene");
+    
     }
 
     preload() {
@@ -14,5 +15,9 @@ class Title extends Phaser.Scene {
 
     update(time) {
         this.logo.y += 0.1 * Math.sin(time / 500.0);
+
+        this.input.on("pointerdown", () => {
+            this.scene.start("messageScene", {messageIndex: 0});
+        });
     }
 }

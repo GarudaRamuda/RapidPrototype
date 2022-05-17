@@ -1,3 +1,7 @@
+let canvasStyle = " \
+border-radius: 10px; \
+"
+    
 // let canvasStyle = " \
 // border-radius: 10px; \
 // "
@@ -20,9 +24,20 @@ let config = {
         width: 480,
         height: 320
     },
-    scene: [Title]
-    // Play, Final
+    // need to add Play scene here
+    scene: [Title, Message, Victory],
+    backgroundColor : "#1982FC",
+    canvasStyle: canvasStyle
+    
 }
 
 let game = new Phaser.Game(config);
 
+let messages = [
+    {text: "Watch out for slugs!", target: "playScene"},
+    {text: "That's good work!", target: "messageScene"},
+    {text: "Good job!", target: "playScene"},
+    {text: "This is the last level!", target: "messageScene"},
+    {text: "Watch out for snails!", target: "playScene"},
+    {text: "The roly poly gets a badge!", target: "victoryScene"},
+];
