@@ -5,15 +5,19 @@ class Play extends Phaser.Scene {
    }
 
    preload() {
-
+      this.load.image('slug', './assets/slugs.png');
+      this.load.image('background', './assets/gameplayBackground.png');
+      this.load.image('player', './assets/rolly-polly mirror.png');
+      this.load.image('floor', './assets/ground_tile.png');
    }
 
    create() {
       this.win = false;
       this.gameover = false;
 
+      this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setScale(2);
       // Player
-      this.player = new Player(this, config.width / 4, config.height - 30, 'player');
+      this.player = new Player(this, config.width / 4, config.height - 30, 'player').setScale(0.25);
       this.player.setCollideWorldBounds(true);
 
       this.slugs = this.add.group({
@@ -22,8 +26,8 @@ class Play extends Phaser.Scene {
       });
 
       // Slugs
-      this.slug1 = new Slug(this, config.width, config.height - 32, 'slug');
-      this.slug2 = new Slug(this, config.width + 200, config.height - 32, 'slug');
+      this.slug1 = new Slug(this, config.width, config.height - 32, 'slug').setScale(0.25);
+      this.slug2 = new Slug(this, config.width + 200, config.height - 32, 'slug').setScale(0.25);
       this.slugs.add(this.slug1);
       this.slugs.add(this.slug2);
       
