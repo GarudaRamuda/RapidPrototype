@@ -25,7 +25,7 @@ let config = {
         height: 320
     },
     // need to add Play scene here
-    scene: [Title, Message, Victory],
+    scene: [Title, Message, Gameplay, Victory],
     backgroundColor : "#1982FC",
     canvasStyle: canvasStyle
     
