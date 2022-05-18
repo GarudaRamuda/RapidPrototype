@@ -17,7 +17,7 @@ class Play extends Phaser.Scene {
 
       this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setScale(2);
       // Player
-      this.player = new Player(this, config.width / 4, config.height - 30, 'player').setScale(0.25);
+      this.player = new Player(this, config.width / 4, config.height - 30, 'player').setScale(0.2);
       this.player.setCollideWorldBounds(true);
 
       this.slugs = this.add.group({
@@ -26,8 +26,8 @@ class Play extends Phaser.Scene {
       });
 
       // Slugs
-      this.slug1 = new Slug(this, config.width, config.height - 32, 'slug').setScale(0.25);
-      this.slug2 = new Slug(this, config.width + 200, config.height - 32, 'slug').setScale(0.25);
+      this.slug1 = new Slug(this, config.width, config.height - 18, 'slug').setScale(0.2);
+      this.slug2 = new Slug(this, config.width + 400, config.height - 18, 'slug').setScale(0.2);
       this.slugs.add(this.slug1);
       this.slugs.add(this.slug2);
       

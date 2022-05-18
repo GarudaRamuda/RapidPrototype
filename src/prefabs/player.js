@@ -8,7 +8,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    
    }
    update() {
-      if(this.scene.physics.world.collide(this, this.scene.slugs)) {
+      if(!this.isJumping && this.scene.physics.world.collide(this, this.scene.slugs)) {
          console.log("game over");
          this.scene.gameOver();
       }
