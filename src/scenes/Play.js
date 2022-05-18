@@ -26,8 +26,8 @@ class Play extends Phaser.Scene {
       });
 
       // Slugs
-      this.slug1 = new Slug(this, config.width, config.height - 18, 'slug').setScale(0.2);
-      this.slug2 = new Slug(this, config.width + 400, config.height - 18, 'slug').setScale(0.2);
+      this.slug1 = new Slug(this, config.width, config.height - 27, 'slug').setScale(0.2);
+      this.slug2 = new Slug(this, config.width + 400, config.height - 27, 'slug').setScale(0.2);
       this.slugs.add(this.slug1);
       this.slugs.add(this.slug2);
       
